@@ -7,21 +7,22 @@ Este roteiro divide o desafio em 6 fases lógicas, baseadas no pipeline de Data 
 ## 📋 1. Setup e Entendimento do Problema
 *Fase inicial para organizar o ambiente e compreender os dados disponíveis.*
 
-- [ ] **Configuração do Ambiente e Repositório**
+- [X] **Configuração do Ambiente e Repositório**
     - Criar repositório no GitHub (requisito de entrega).
     - Configurar ambiente Python (Jupyter Notebook/Lab ou Google Colab).
     - Criar arquivo `requirements.txt` com as bibliotecas iniciais (`pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`).
 
-- [ ] **Carga e Fusão de Dados (Data Ingestion)**
+- [X] **Carga e Fusão de Dados (Data Ingestion)**
     - Carregar `flights.csv`, `airlines.csv` e `airports.csv`.
     - Consultar o `dicionario.png` para entender as colunas (identificar numéricas, categóricas e targets como `DEPARTURE_DELAY`).
     - Realizar o merge dos datasets:
         - Unir `flights` + `airlines` (para obter nomes das companhias).
         - Unir `flights` + `airports` (para obter dados de origem/destino).
 
-- [ ] **Definição do Escopo (Supervisionado)**
+- [] **Definição do Escopo (Supervisionado)**
     - Decidir o objetivo principal (conforme `TECH CHALLENGE.txt`):
         - **Opção A (Classificação):** Prever SE vai atrasar (`SIM`/`NAO`). Sugestão: Criar coluna binária `is_delayed` (ex: atraso > 15 min = 1).
+        Escolhido: (Classificação (prever se vai atrasar: Sim/Não), pois é geralmente o objetivo de negócio mais direto (o passageiro quer saber se vai atrasar ou não).)
         - **Opção B (Regressão):** Prever O TEMPO do atraso (em minutos).
 
 ---
@@ -29,12 +30,12 @@ Este roteiro divide o desafio em 6 fases lógicas, baseadas no pipeline de Data 
 ## 🔍 2. Análise Exploratória de Dados (EDA) e Pré-processamento
 *Baseado em: `Aprendizado Supervisionado.txt` (Preparação de Dados) e `TECH CHALLENGE.txt` (Obrigatório).*
 
-- [ ] **Limpeza de Dados (Data Cleaning)**
+- [] **Limpeza de Dados (Data Cleaning)**
     - Verificar e tratar valores nulos (Missing Values).
     - Verificar duplicatas.
     - Analisar Outliers (ex: atrasos irreais ou erros de digitação) e decidir estratégia (remover/tratar).
 
-- [ ] **Análise Estatística e Visualização**
+- [] **Análise Estatística e Visualização**
     - Plotar distribuição da variável alvo (verificar balanceamento de classes).
     - Analisar correlações (Heatmap): Quais variáveis impactam mais (`TAX_OUT`, `WHEELS_OFF`, etc)?
     - Responder perguntas do desafio:
@@ -42,7 +43,7 @@ Este roteiro divide o desafio em 6 fases lógicas, baseadas no pipeline de Data 
         - Existe sazonalidade (dias da semana, meses)?
         - Quais companhias aéreas atrasam mais?
 
-- [ ] **Feature Engineering (Engenharia de Atributos)**
+- [] **Feature Engineering (Engenharia de Atributos)**
     - Criar variáveis derivadas (ex: "fim de semana", "período do dia").
     - Aplicar Encoding em categóricas (One-Hot Encoding, Label Encoding).
     - Aplicar Escalonamento (StandardScaler/MinMaxScaler) em numéricas.

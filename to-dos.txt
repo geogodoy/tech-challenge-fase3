@@ -1,0 +1,55 @@
+
+Lista de To-dos:
+Tarefa/Etapa 1: Setup e Entendimento do Problema.
+[X] Setup e Entendimento do Problema
+[X] Carga e Fusão de Dados (Data Ingestion)
+[X] Definição do Escopo
+ Notebook: 1_Setup_e_Entendimento_do_Problema.ipynb.
+ - Objetivos deste notebook:
+  - Carregar os datasets originais (flights.csv, airlines.csv, airports.csv).
+  - Realizar o merge (junção) para enriquecer o dataset principal com nomes completos de companhias aéreas e detalhes dos aeroportos (cidade, estado, coordenadas).
+  - Criar a variável alvo (IS_DELAYED) que será usada na classificação (definindo atraso como > 15 minutos).
+
+
+Tarefa/Etapa 2: Análise Exploratória de Dados (EDA) e Pré-processamento.
+[X] EDA e Pré-processamento
+Notebook: 2_EDA_e_PreProcessamento.ipynb.
+- Objetivos deste notebook:
+  - Carregar a amostra preparada.
+  - Analisar estatísticas e distribuições (histogramas, boxplots).
+  - Responder às perguntas de negócio (quais companhias atrasam mais, etc.).
+  - Realizar o pré-processamento final para Machine Learning (Encoding de variáveis categóricas e Escalonamento).
+
+Tarefa/Etapa 3: Modelagem Não Supervisionada.
+[X] Modelagem Não Supervisionada
+Notebook: 3_Nao_Supervisionado.ipynb
+- Objetivos deste notebook:
+  - Redução de Dimensionalidade (PCA): Visualizar os dados em 2D para tentar enxergar padrões (se os voos atrasados se separam dos pontuais).
+  - Clusterização (K-Means): Agrupar voos semelhantes. Vamos tentar encontrar clusters naturais (ex: "Voos curtos e pontuais" vs "Voos longos e problemáticos").
+  - Método do Cotovelo: Para justificar a escolha do número de clusters (K).
+
+Tarefa/Etapa 4: Modelagem Supervisionada e Avaliação.
+[X] Modelagem Supervisionada Classificacao
+[X] Avaliação e Diagnóstico
+Notebook: 4_Supervisionado_e_Avaliacao.ipynb
+Objetivos deste notebook:
+- Carregar os dados prontos (flights_ml_ready.csv).
+- Dividir em Treino e Teste (train_test_split).
+- Treinar modelos de Classificação (para prever IS_DELAYED):
+   - Baseline: Regressão Logística.
+   - Modelo Robusto: Random Forest ou XGBoost (vamos usar Random Forest que é nativo do sklearn).
+- Treinar modelos de Regressão (Opcional/Extra para prever o tempo exato):
+   - Linear Regression vs Random Forest Regressor.
+- Avaliação: Matriz de Confusão, Acurácia, Recall, ROC Curve.
+- Feature Importance: Descobrir o que causa o atraso.
+
+
+PLUS: Modelo Supervisionada Regressão
+Notebook: 5_Regressao_extra.inpynb
+- Objetivos deste notebook:
+  - Prever O TEMPO EXATO do atraso (em minutos), ao invés de apenas classificar se haverá atraso ou não.
+  - Utilizar a variável ARRIVAL_DELAY (numérica contínua) como alvo (target).
+  - Comparar modelos de regressão (Linear Regression vs Random Forest Regressor) e avaliar métricas como RMSE (erro médio em minutos) e R
+
+[ ] Entrega Final
+
