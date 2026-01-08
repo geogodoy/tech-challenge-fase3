@@ -1,0 +1,118 @@
+Aprendizado por reforço - Introdução
+1) Objetivo da aula (3–5 linhas)
+Entender o que é Aprendizado por Reforço (Reinforcement Learning — RL) e por que ele é diferente de supervisionado e não supervisionado.
+Compreender o ciclo de interação agente ↔ ambiente, guiado por recompensas/punições.
+Fixar os componentes essenciais: ambiente, agente e política e a ideia de exploration vs exploitation.
+2) Conceitos essenciais (definições rápidas)
+Agente: quem toma decisões (executa ações).
+Ambiente: o “mundo” com o qual o agente interage.
+Ação (a): escolha do agente.
+Recompensa (r): feedback do ambiente (positivo/negativo).
+Política (π): estratégia do agente para escolher ações.
+Exploração vs Explotação: explorar ações novas vs usar o que já parece melhor.
+
+Aprendizado por reforço - Introdução
+3) Ideia central (frase-chave)
+RL aprende por tentativa e erro interagindo com o ambiente para maximizar recompensa ao longo do tempo.
+4) “O que lembrar”
+Não existe um “conjunto fixo de treino” como no supervisionado.
+O problema é sequencial: decisões agora afetam o futuro.
+
+Aprendizado por reforço - Fundamentos: loop do RL, estados/observações, ações, recompensa, retorno
+1) Objetivo da aula
+Entender o loop formal do RL: estado/observação → ação → recompensa → próximo estado.
+Diferenciar estado vs observação.
+Fixar o objetivo de RL: maximizar retorno esperado (recompensa cumulativa esperada).
+Introduzir a noção de episódio.
+2) Conceitos essenciais
+Sequência típica: S_t \rightarrow A_t \rightarrow R_{t+1} \rightarrow S_{t+1}
+Episódio: uma “rodada completa” do problema (termina ao morrer, concluir fase, atingir critério etc.).
+Retorno (return): soma (geralmente descontada) das recompensas ao longo do tempo.
+Estado vs Observação
+Estado: descrição completa do ambiente (sem informação oculta).
+Observação: visão parcial do estado (pode haver info oculta).
+
+Aprendizado por reforço - Fundamentos: loop do RL, estados/observações, ações, recompensa, retorno
+3) “O que lembrar”
+RL se ancora na hipótese da recompensa: objetivos podem ser descritos como maximizar retorno.
+Em problemas reais, muitas vezes temos observações (não estados completos).
+
+Aprendizado por reforço - Métodos Baseados em Valor: Q-Learning e DQN (visão)
+1) Objetivo da aula
+Entender RL por métodos baseados em valor (aprender “quão boa” é uma ação em um estado).
+Aprender o Q-learning: Q-table, atualizações iterativas e papel da equação de Bellman.
+Entender a estratégia epsilon-greedy para equilibrar exploração e explotação.
+Conhecer a evolução para DQN (Deep Q-Network) em cenários grandes (ex.: imagens).
+2) Conceitos essenciais
+Q(s, a): qualidade/valor esperado de tomar ação a no estado s (considerando futuro).
+Q-table: tabela de valores Q para todos os pares (s, a) (viável em espaço pequeno/discreto).
+Bellman (intuição): atualizar Q usando recompensa imediata + melhor valor futuro estimado.
+Parâmetros importantes
+lr (learning rate): quão rápido atualiza Q com novas informações.
+γ (gamma / discount factor): peso das recompensas futuras.
+ε (epsilon): probabilidade de explorar no epsilon-greedy.
+
+Aprendizado por reforço - Métodos Baseados em Valor: Q-Learning e DQN (visão)
+3) Pipeline do Q-learning (passos)
+Inicializar Q-table (geralmente zeros).
+Para cada episódio:
+escolher ação via epsilon-greedy
+executar ação, observar recompensa e próximo estado
+atualizar Q(s,a)
+Repetir até convergir/estabilizar.
+4) DQN (visão de alto nível)
+Troca a Q-table por uma rede neural que estima Q-values.
+Útil quando o estado é grande/contínuo (ex.: pixels de jogos).
+5) “O que lembrar”
+Valor-based aprende “o valor das ações”; política vem indiretamente (pega ação de maior Q).
+Epsilon-greedy é o mecanismo simples para exploração.
+
+Aprendizado por reforço - Métodos Baseados em Política: REINFORCE, Actor-Critic e afins
+1) Objetivo da aula
+Entender o que é política e por que aprender política diretamente pode ser melhor.
+Diferenciar políticas determinísticas vs estocásticas.
+Conhecer as duas famílias: políticas iterativas e políticas de gradiente.
+Ter visão de algoritmos populares: REINFORCE, Actor-Critic, PPO, TRPO, DDPG, SAC (panorama).
+2) Conceitos essenciais
+Policy-based: aprende π(a|s) diretamente (em vez de aprender Q(s,a)).
+Vantagens
+lida bem com ações contínuas (ex.: velocidade, ângulo).
+pode tomar decisões sem “argmax em Q” a cada passo.
+Desvantagem
+pode ser mais lento para convergir e sensível a ruído (varia por método).
+
+Aprendizado por reforço - Métodos Baseados em Política: REINFORCE, Actor-Critic e afins
+3) Duas categorias (como resumir)
+Políticas iterativas: alternam avaliação da política e melhoria da política.
+Policy Gradient: ajusta parâmetros da política seguindo gradiente para aumentar retorno esperado.
+4) “Mapa” rápido dos algoritmos (1 linha cada)
+REINFORCE: usa amostras/retornos (Monte Carlo) para atualizar política.
+Actor-Critic: ator (política) + crítico (estima valor) para reduzir variância e estabilizar aprendizado.
+PPO/TRPO: atualizações “controladas” para estabilidade.
+DDPG/SAC: muito usados em ações contínuas (visão geral).
+5) “O que lembrar”
+Policy-based é especialmente importante quando ação é contínua e/ou Q-table é inviável.
+Actor-Critic é um “meio termo” muito comum na prática.
+
+Aprendizado por reforço - Métodos Baseados em Modelo + RL Multi-Agente
+1) Objetivo da aula
+Entender model-based RL: construir um modelo do ambiente para simular e planejar antes de agir.
+Conhecer técnicas/casos citados: Dyna-Q, MCTS, AlphaZero, MBPO (visão).
+Entender o que muda em multi-agente: vários agentes atuando no mesmo ambiente (cooperação/competição).
+Reconhecer desafios: coordenação, não-estacionariedade e exploração mais complexa.
+2) Conceitos essenciais (Model-based)
+Modelo do ambiente: prevê transições de estado e recompensas futuras.
+Planejamento: agente avalia mentalmente (simula) ações futuras para escolher melhor.
+Vantagem: pode reduzir necessidade de interações reais (mais eficiente).
+Risco: se o modelo do ambiente for ruim, o planejamento leva a decisões ruins.
+
+Aprendizado por reforço - Métodos Baseados em Modelo + RL Multi-Agente
+3) Multi-agente (ideias-chave)
+Vários agentes aprendem simultaneamente; podem:
+cooperar (objetivo comum),
+competir (jogos),
+agir de forma mista.
+Pode gerar comportamento emergente (estratégias que surgem da interação).
+4) “O que lembrar”
+Model-based = “aprender com simulação + planejamento”.
+Multi-agente aumenta poder de modelar cenários reais, mas aumenta complexidade (coordenação e estabilidade).

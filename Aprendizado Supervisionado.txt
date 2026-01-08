@@ -1,0 +1,315 @@
+Aprendizado Supervisionado - Classificação 
+1) Objetivo da aula (3–5 linhas)
+Entender o que é aprendizado supervisionado e por que ele é usado quando não é prático humanos detectarem padrões em dados complexos/volumosos (big data).
+Saber diferenciar as duas tarefas do supervisionado: classificação vs regressão (com foco inicial em classificação).
+Entender o fluxo tradicional: dividir dados em treino/teste → treinar → avaliar com métricas.
+2) Conceitos essenciais (definições curtas para memorizar)
+Aprendizado supervisionado: o modelo aprende a mapear entradas X (atributos/features) para uma saída y (classe/rótulo/target) a partir de exemplos rotulados.
+Função aprendida: f: X \rightarrow y
+Exemplo (amostra): uma linha do dataset (valores das features + o rótulo).
+Classe (y) discreta → Classificação (categorias, valores inteiros).
+y contínuo → Regressão (valores reais, como preço).
+
+Aprendizado Supervisionado - Classificação 
+3) Intuição de Classificação (o que o modelo “faz”)
+A partir de várias amostras com rótulo, o algoritmo aprende “regras/padrões” para atribuir uma categoria a um novo exemplo.
+Exemplo clássico: Íris com 3 classes (setosa, versicolor, virginica).
+4) Pipeline padrão do supervisionado (checklist)
+Dividir o dataset de forma randômica em treino e teste (ex.: 70%/30%).
+Treinar o algoritmo no conjunto de treino (ele aprende a relação entre X e y).
+Predizer no conjunto de teste.
+Avaliar a performance com métricas apropriadas.
+Frase-chave: treino serve para aprender; teste serve para medir generalização.
+
+Aprendizado Supervisionado - Classificação 
+5) Métricas (apenas o “mapa mental” da aula)
+Para classificação, guarde como lista de referência:
+Acurácia
+Precisão
+Recall
+F1-score (Outras aparecem como exemplos gerais: MSE, RMSE, MAE, mAP — mais comuns em regressão/detecção.)
+6) Onde isso aparece no mundo (1 linha por área)
+NLP, visão computacional, sistemas de recomendação, detecção de fraudes, etc.
+7) Ferramentas citadas (stack mínima)
+Scikit-learn: carregar datasets e treinar modelos (ex.: Iris).
+(No ecossistema do hands-on ao longo da fase: ferramentas para manipular/preparar dados e chegar no modelo final.)
+
+Aprendizado Supervisionado - Classificação
+Checklist de revisão (para fechar Aula 1)
+Sei explicar f: X \rightarrow y com minhas palavras.
+Sei dizer quando é classificação (y discreto) vs regressão (y contínuo).
+Sei descrever o fluxo treino → teste → métricas.
+Consigo citar 3 métricas de classificação e o que elas medem (em 1 frase cada).
+Consigo dar um exemplo real de uso (fraude, spam, diagnóstico etc.).
+
+Aprendizado Supervisionado - Preparação de Dados e Avaliação de Modelos 
+1) Objetivo da aula (3–5 linhas)
+Entender por que pré-processamento de dados é decisivo para o desempenho do modelo (princípio GIGO: Garbage In, Garbage Out).
+Aprender o que envolve “preparar dados”: limpeza, imputação, tratamento de outliers, transformações, codificação de categóricas e seleção/engenharia de atributos (features).
+Consolidar métricas de avaliação para classificação e regressão e como interpretá-las para escolher um modelo.
+
+2) Ideia central (frase-chave)
+“Modelo não faz milagre: a qualidade do dado e das features geralmente determina o teto de performance.”
+
+Aprendizado Supervisionado - Preparação de Dados e Avaliação de Modelos 
+3) Pré-processamento (checklist prático, nível de resumo)
+Organize como um pipeline que você consegue aplicar em qualquer dataset:
+Limpeza de dados
+Identificar inconsistências, erros, duplicatas (se aplicável).
+Valores ausentes (missing values)
+Estratégias: remover linhas/colunas (quando faz sentido) ou imputar (média/mediana/moda, ou métodos mais elaborados).
+Outliers
+Detectar e tratar (capar/winsorizar, remover, transformar), dependendo do impacto e do contexto.
+Transformações / Escalonamento
+Normalização e padronização (úteis para algoritmos sensíveis à escala).
+Codificação de variáveis categóricas
+Transformar categorias em números (ex.: one-hot, label encoding — escolha depende do modelo e do tipo de variável).
+Engenharia e seleção de features
+Criar atributos mais informativos e/ou reduzir ruído removendo features pouco úteis.
+Estrutura mental: limpar → completar → corrigir extremos → colocar em escala → transformar categorias → melhorar features.
+
+Aprendizado Supervisionado - Preparação de Dados e Avaliação de Modelos 
+4) Avaliação de modelos (o que avaliar e por quê)
+O modelo aprende no treino, mas a avaliação serve para medir generalização.
+Métricas orientam:
+comparação entre modelos,
+escolha do “modelo definitivo”,
+decisão de seguir para deploy.
+5) Métricas para Classificação (mapa mental)
+Coloque em bullets com “quando olhar”:
+Acurácia: bom quando classes são balanceadas e custo de erro é parecido.
+Precisão (Precision): quando falso positivo é caro (ex.: liberar fraude).
+Recall (Revocação/Sensibilidade): quando falso negativo é caro (ex.: não detectar fraude/doença).
+F1-score: equilíbrio entre precisão e recall (útil quando há trade-off).
+Matriz de confusão: visão detalhada dos acertos/erros por classe; ajuda a diagnosticar onde o modelo falha.
+(Se quiser enriquecer seu resumo: anote “TP, FP, FN, TN” ao lado da matriz.)
+
+Aprendizado Supervisionado - Preparação de Dados e Avaliação de Modelos 
+6) Métricas para Regressão (mapa mental)
+MSE (erro quadrático médio): penaliza erros grandes.
+RMSE (raiz do MSE): mesma unidade do alvo, mais interpretável.
+7) Ferramentas (como conectar com implementação)
+scikit-learn: calcular métricas (accuracy, precision, recall, f1 etc.).
+Bibliotecas numéricas (ex.: NumPy) costumam apoiar transformações e cálculos auxiliares.
+A ideia do resumo é ligar: “pré-processamento bem feito + métrica certa = decisão melhor”.
+
+Aprendizado Supervisionado - Preparação de Dados e Avaliação de Modelos 
+Checklist de revisão (para fechar a aula)
+Consigo listar 5 técnicas de pré-processamento e explicar “para que serve” em 1 frase.
+Sei quando priorizar precisão vs recall.
+Sei para que serve a matriz de confusão.
+Sei diferenciar MSE de RMSE e quando usar regressão vs classificação.
+Consigo justificar: “qual métrica usar depende do custo do erro”.
+
+Aprendizado Supervisionado - Modelos de Classificação
+1) Objetivo da aula (3–5 linhas)
+Entender a tarefa de classificação no supervisionado: treinar modelos para prever a qual categoria (classe) um dado pertence.
+Conhecer os principais modelos de classificação e ter um “mapa mental” de quando usar cada um: Regressão Logística, KNN, Árvore de Decisão, SVM e Redes Neurais (Perceptron/MLP).
+Conectar o fluxo completo: carregar dados → separar X e y → dividir treino/teste → treinar → avaliar com métricas.
+2) Conceitos essenciais (definições rápidas)
+Classificação: y é discreto/categórico (spam/não spam, gato/cachorro, espécie da íris etc.).
+Features (X): variáveis de entrada.
+Classe/target (y): rótulo que o modelo tenta prever.
+Treino vs teste: treino para aprender; teste para medir generalização.
+
+
+Aprendizado Supervisionado - Modelos de Classificação
+3) Pipeline padrão (checklist “do dado ao modelo”)
+Carregar dataset (ex.: CSV).
+Definir colunas (nomes das features e da classe).
+Separar X (DataFrame com features) e y (Series com classe/target).
+Train/test split (divisão randômica).
+Treinar o modelo escolhido.
+Predizer no teste.
+Avaliar (acurácia, precisão, recall, F1; matriz de confusão quando necessário).
+Dica de resumo: escreva esse pipeline uma vez e, embaixo, só varia “qual modelo foi usado”.
+
+Aprendizado Supervisionado - Modelos de Classificação
+4) Modelos de classificação (mapa mental: o que é + pontos fortes)
+Organize sempre no mesmo formato:
+4.1 Regressão Logística
+O que é: classificador (muito usado em binário) que estima probabilidade de pertencer a uma classe.
+Pontos fortes: simples, rápido, baseline excelente.
+Atenção: funciona melhor quando a separação é aproximadamente linear (ou com engenharia de features).
+4.2 KNN (K Vizinhos Mais Próximos)
+O que é: classifica um novo ponto pela maioria entre seus K vizinhos no espaço de features.
+Pontos fortes: intuitivo; bom baseline.
+Atenção: escolha de K é crucial; sensível à escala das features e pode ficar pesado em datasets grandes.
+
+Aprendizado Supervisionado - Modelos de Classificação
+4.3 Árvore de Decisão
+O que é: cria regras em forma de árvore, dividindo dados em subconjuntos por features.
+Pontos fortes: interpretável, visual, lida bem com relações não lineares.
+Atenção: pode overfitar sem controle (profundidade, min_samples etc.).
+4.4 SVM (Support Vector Machine)
+O que é: encontra um hiperplano que separa classes maximizando a margem; usa “vetores de suporte”.
+Pontos fortes: forte em margens bem definidas; pode funcionar muito bem em espaços de alta dimensão.
+Atenção: precisa de tuning (kernel, C, gamma) e costuma exigir bom pré-processamento/escala.
+4.5 Redes Neurais (Perceptron e MLP)
+Perceptron
+O que é: modelo simples, aprende uma separação linear (uma “reta”/hiperplano).
+MLP (Multilayer Perceptron)
+O que é: rede com múltiplas camadas; aprende funções não lineares mais complexas.
+Pontos fortes: flexíveis, capturam padrões complexos.
+Atenção: exigem mais tuning, dados e cuidado com escala/regularização.
+
+Aprendizado Supervisionado - Modelos de Classificação
+5) Como escolher “qual modelo tentar primeiro” (heurística rápida)
+Inclua esse bloco no fim do seu resumo (ajuda muito na prova e em projeto):
+Quero baseline rápido e interpretável → Regressão Logística / Árvore.
+Dados pequenos, fronteiras simples → KNN pode ir bem.
+Separação “bem definida” e espaço de features bom → SVM.
+Relação complexa/não linear e mais dados disponíveis → MLP.
+
+6) Métricas (ligação com a Aula 2- Preparação de Dados e Avaliação de Modelos)
+Para comparar modelos de classificação: acurácia, precisão, recall, F1-score.
+Use matriz de confusão para entender onde o modelo erra (por classe).
+
+Aprendizado Supervisionado - Modelos de Classificação
+Checklist de revisão (para fechar a aula)
+Consigo explicar cada modelo em 2 frases (mecanismo + quando usar).
+Consigo descrever o pipeline completo sem olhar.
+Sei quais métricas usar para comparar modelos de classificação.
+Sei justificar por que “o melhor modelo depende do dataset” (trade-off performance vs interpretabilidade vs custo).
+
+Aprendizado Supervisionado - Modelos de Regressão
+1) Objetivo da aula (3–5 linhas)
+Entender a tarefa de regressão dentro do aprendizado supervisionado: prever um valor contínuo.
+Diferenciar claramente classificação vs regressão pela natureza da saída (discreta vs contínua), mantendo o mesmo fluxo treino/teste.
+Conhecer modelos comuns de regressão e como avaliar desempenho com métricas adequadas (com destaque para MAPE).
+
+2) Conceitos essenciais (definições rápidas)
+Regressão: o dataset tem features X e um alvo y contínuo (ex.: preço, demanda, risco, tempo).
+Diferença principal p/ classificação:
+Classificação → saída discreta (classes)
+Regressão → saída contínua (valor numérico)
+O objetivo continua sendo aprender um mapeamento: f: X \rightarrow y.
+
+Aprendizado Supervisionado - Modelos de Regressão
+3) Exemplos e aplicações (1 linha cada, para memorizar)
+Previsão de preços (ex.: casas).
+Demanda/estoque (forecast para otimizar inventário).
+Análise financeira (risco de crédito, oportunidades).
+Manutenção preditiva (prever falhas antes de acontecerem).
+
+4) Pipeline padrão (igual ao da classificação)
+Separar X e y.
+Dividir em treino e teste (mesma lógica do supervisionado).
+Treinar o modelo no treino.
+Predizer no teste.
+Avaliar com métricas de regressão.
+Boa frase para seu resumo: “O pipeline é o mesmo; mudam a natureza do target e as métricas.”
+
+Aprendizado Supervisionado - Modelos de Regressão
+5) Métricas de regressão (mapa mental)
+Inclua as mais citadas no conteúdo:
+MAPE (Mean Absolute Percentage Error)
+Interpretação: erro médio percentual (mais intuitivo para negócio).
+Observação importante: defina um baseline/referência (ex.: “MAPE aceitável até X%”) para saber se o modelo está bom.
+(Da aula anterior, que continua valendo): MSE e RMSE.
+
+6) Modelos de regressão (o que é + por que usar)
+Organize em blocos curtos; mesmo formato da aula 3.
+6.1 SVR (Support Vector Regression)
+O que é: versão de SVM para regressão; tenta ajustar uma função mantendo erros dentro de uma “margem” (intuição).
+Por que usar: pode performar bem com relações não lineares (dependendo do kernel).
+Ponto-chave da aula: ajustar parâmetros melhora resultado (ex.: mudar kernel e C).
+Exemplo ilustrativo visto: SVR padrão teve MAPE pior e, ao ajustar parâmetros (kernel linear, C maior), o MAPE melhorou.
+
+Aprendizado Supervisionado - Modelos de Regressão
+6.2 Árvore de Decisão para Regressão (Árvore de Regressão)
+O que é: árvore que divide o espaço de features em regiões; a previsão costuma ser a média (ou valor agregado) das observações na folha.
+Como constrói: divisões recursivas para minimizar erro a cada passo (reduzir variância/erro).
+Pontos fortes: captura não linearidade e é interpretável.
+Atenção: tendência a overfitting se crescer demais (controlar profundidade, etc.).
+(Se na sua aula tiverem aparecido outros modelos — Regressão Linear, Random Forest, XGBoost — você pode encaixar aqui mantendo o mesmo padrão “o que é / prós / atenção”.)
+7) Como “julgar” se o modelo melhorou (bloco de decisão)
+Sempre compare com um baseline (algo simples):
+previsão constante (média/mediana), regressão linear simples, etc.
+Se a métrica escolhida (ex.: MAPE) caiu de forma consistente, houve ganho.
+Ajustar parâmetros pode melhorar o mesmo modelo (gancho para a próxima aula: otimização/tuning).
+
+Aprendizado Supervisionado - Modelos de Regressão
+6.2 Árvore de Decisão para Regressão (Árvore de Regressão)
+O que é: árvore que divide o espaço de features em regiões; a previsão costuma ser a média (ou valor agregado) das observações na folha.
+Como constrói: divisões recursivas para minimizar erro a cada passo (reduzir variância/erro).
+Pontos fortes: captura não linearidade e é interpretável.
+Atenção: tendência a overfitting se crescer demais (controlar profundidade, etc.).
+(Se na sua aula tiverem aparecido outros modelos — Regressão Linear, Random Forest, XGBoost — você pode encaixar aqui mantendo o mesmo padrão “o que é / prós / atenção”.)
+7) Como “julgar” se o modelo melhorou (bloco de decisão)
+Sempre compare com um baseline (algo simples):
+previsão constante (média/mediana), regressão linear simples, etc.
+Se a métrica escolhida (ex.: MAPE) caiu de forma consistente, houve ganho.
+Ajustar parâmetros pode melhorar o mesmo modelo (gancho para a próxima aula: otimização/tuning).
+
+Aprendizado Supervisionado - Modelos de Regressão
+Checklist de revisão (para fechar a aula)
+Sei explicar regressão em 1 frase e diferenciar de classificação.
+Sei citar 3 casos de uso reais.
+Sei dizer por que MAPE é útil e por que preciso de baseline.
+Sei descrever SVR e árvore de regressão em 2 frases cada.
+Entendo que ajustar parâmetros pode melhorar desempenho (tuning).
+
+Aprendizado Supervisionado - Técnicas de Otimização e Ajuste Fino no Aprendizado Supervisionado
+1) Objetivo da aula (3–5 linhas)
+Entender por que, após treinar um modelo “base”, precisamos de otimização e ajuste fino para alcançar melhor desempenho.
+Aprender duas técnicas centrais: Grid Search (tuning de hiperparâmetros) e Validação Cruzada (avaliação mais confiável).
+Consolidar os conceitos de underfitting, overfitting e generalização, e o trade-off viés vs variância.
+
+2) Conceitos essenciais (definições curtas)
+Generalização: o modelo performa bem em dados novos (não vistos).
+Underfitting: modelo “simples demais”; não aprende o padrão (erro alto no treino e no teste).
+Overfitting: modelo “decorou” o treino; desempenho ótimo no treino e pior no teste.
+Viés vs variância
+Viés alto → tende a underfitting (modelo rígido).
+Variância alta → tende a overfitting (modelo muito sensível ao treino).
+
+Aprendizado Supervisionado - Técnicas de Otimização e Ajuste Fino no Aprendizado Supervisionado
+3) Fluxo recomendado (pipeline da aula 5)
+Definir métrica-alvo (acurácia/F1 para classificação; RMSE/MAPE para regressão).
+Definir modelo candidato (ex.: SVM, árvore, KNN, regressão logística).
+Definir espaço de hiperparâmetros (valores que você quer testar).
+Rodar Validação Cruzada para avaliar o modelo de forma mais robusta.
+Rodar Grid Search (normalmente combinado com validação cruzada) para achar a melhor combinação de hiperparâmetros.
+Treinar o “melhor modelo” e validar em um conjunto de teste final (separado).
+Ideia-chave: otimização = “escolher hiperparâmetros que maximizam a métrica sem perder generalização”.
+
+Aprendizado Supervisionado - Técnicas de Otimização e Ajuste Fino no Aprendizado Supervisionado
+4) Validação Cruzada (Cross-Validation) — como explicar no resumo
+Problema: uma única divisão treino/teste pode ser “azarada” e gerar avaliação pouco confiável.
+Solução: dividir em folds e alternar:
+em cada rodada: alguns folds para treino, 1 fold para validação.
+no final: média (e às vezes desvio padrão) das métricas.
+O que anotar como takeaway
+Avaliação fica mais estável e menos dependente de uma divisão específica.
+Ajuda a detectar overfitting (métrica varia muito entre folds).
+
+Aprendizado Supervisionado - Técnicas de Otimização e Ajuste Fino no Aprendizado Supervisionado
+5) Grid Search — como explicar no resumo
+Técnica para testar combinações de hiperparâmetros de forma sistemática.
+Você define uma “grade” (lista de valores por parâmetro) e mede a métrica para cada combinação (geralmente usando validação cruzada).
+Resultado: “melhor conjunto de parâmetros” para aquela métrica/objetivo.
+Observação importante
+Pode consumir bastante tempo, pois o custo cresce com:
+nº de combinações de parâmetros × nº de folds.
+
+Aprendizado Supervisionado - Técnicas de Otimização e Ajuste Fino no Aprendizado Supervisionado
+6) Como conectar com os modelos anteriores (exemplos de hiperparâmetros)
+Sem aprofundar demais, vale colocar 1 linha por modelo só para “ancorar”:
+KNN: K (número de vizinhos).
+SVM/SVR: kernel, C, gamma.
+Árvore: max_depth, min_samples_split, min_samples_leaf.
+Redes neurais (MLP): camadas, neurônios, taxa de aprendizado, regularização.
+
+7) “Sinais” práticos para identificar under/overfitting (bloco de diagnóstico)
+Overfitting: treino muito bom, teste ruim; grande gap treino vs validação.
+Underfitting: treino ruim e teste ruim; modelo não capturou padrão.
+Boa generalização: treino e validação/teste bons e próximos (gap pequeno).
+
+Aprendizado Supervisionado - Técnicas de Otimização e Ajuste Fino no Aprendizado Supervisionado
+Checklist de revisão (para fechar o supervisionado)
+Sei explicar underfitting, overfitting e generalização com um exemplo.
+Sei explicar por que validação cruzada é melhor que 1 split único.
+Sei descrever o que Grid Search faz e por que pode ser caro.
+Sei citar hiperparâmetros típicos de KNN/SVM/Árvore/MLP.
+Sei montar mentalmente o pipeline final: modelo + CV + tuning + teste final.

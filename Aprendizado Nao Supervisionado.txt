@@ -1,0 +1,110 @@
+Aprendizado não supervisionado - Introdução
+1) Objetivo da aula
+Entender o que é aprendizado não supervisionado (dados sem rótulo) e quais problemas ele resolve.
+Compreender o clustering como tarefa central e o algoritmo K-Means na prática (inclusive a lógica “do zero”).
+Reconhecer outras tarefas do não supervisionado: redução de dimensionalidade e detecção de anomalias.
+2) Conceitos essenciais
+Não supervisionado: algoritmo recebe apenas X e precisa descobrir estrutura/padrões sem y.
+Clustering: agrupar observações similares em clusters.
+Centroide: ponto que representa o “centro” de um cluster.
+Convergência: quando os centroides param de mudar (ou mudam muito pouco).
+
+Aprendizado não supervisionado - Introdução
+3) Pipeline (K-Means em passos)
+Escolher k (nº de clusters).
+Inicializar k centroides (geralmente aleatórios).
+Atribuir cada ponto ao centroide mais próximo.
+Recalcular centroides (média dos pontos de cada cluster).
+Repetir 3–4 até convergir.
+4) “O que lembrar”
+Sem rótulos: o objetivo é descobrir estrutura.
+K-Means é iterativo: atribui → recalcula → repete.
+Resultado: clusters + centroides.
+
+Aprendizado não supervisionado - Clustering
+1) Objetivo da aula
+Aprofundar clustering e aplicar K-Means em um cenário de análise/segmentação.
+Entender como escolher o número ideal de clusters (método do cotovelo).
+Enxergar clustering como ferramenta de insight de negócio (segmentação/padrões).
+2) Conceitos essenciais
+Similaridade: o que define “parecido” (normalmente distância no espaço de features).
+Inércia / WCSS (intuição): quão “espalhados” os pontos estão dentro dos clusters (quanto menor, melhor).
+Método do cotovelo: escolher k onde o ganho marginal começa a cair.
+
+Aprendizado não supervisionado - Clustering
+3) Pipeline (K-Means aplicado)
+Selecionar features relevantes e tratar ausentes.
+(Opcional/recomendado) Escalonar dados.
+Rodar K-Means para alguns valores de k.
+Calcular inércia por k e usar cotovelo.
+Interpretar clusters (o que cada grupo “representa”).
+4) “O que lembrar”
+k não é mágico: deve ser escolhido com critério (cotovelo + interpretação).
+Clustering = base para segmentação e descoberta de padrões.
+
+Aprendizado não supervisionado - Redução de Dimensionalidade (PCA e alternativas)
+1) Objetivo da aula
+Entender por que reduzir dimensão ajuda (visualização, eficiência, reduzir ruído e risco de overfitting).
+Aprender o núcleo do PCA: projetar dados em menos dimensões preservando o máximo de variância.
+Conhecer alternativas: t-SNE, LDA (supervisionado) e autoencoders.
+2) Conceitos essenciais
+Maldição da dimensionalidade: em alta dimensão, distância/similaridade ficam menos úteis e o custo computacional cresce.
+PCA:
+Componentes principais: novas direções (combinações lineares das features).
+Autovalores/autovetores (intuição): indicam quanta variância cada componente explica e sua direção.
+
+Aprendizado não supervisionado - Redução de Dimensionalidade (PCA e alternativas)
+3) Pipeline (PCA em passos)
+Preparar dados (especialmente escala).
+Rodar PCA.
+Escolher nº de componentes (ex.: variância explicada acumulada).
+Projetar dados no espaço reduzido.
+Usar para visualização, pré-processamento, compressão ou melhoria de modelos.
+4) “O que lembrar”
+PCA não “adivinha” classes: ele preserva variância, não separação.
+Redução de dimensão pode ajudar clustering e visualização.
+
+Aprendizado não supervisionado - Técnicas avançadas: Regras de Associação (Apriori)
+1) Objetivo da aula
+Entender Apriori e regras de associação (“se X então Y”) em dados transacionais.
+Interpretar métricas das regras: suporte, confiança e lift.
+Aplicar em um caso típico: “itens consumidos juntos” (carrinho/streaming).
+2) Conceitos essenciais
+Transação: conjunto de itens consumidos juntos (compra, sessão, lista).
+Regra: X → Y
+Suporte: frequência de X∪Y no dataset.
+Confiança: probabilidade de Y dado X.
+Lift: força da associação vs acaso (lift > 1 sugere associação positiva).
+
+Aprendizado não supervisionado - Técnicas avançadas: Regras de Associação (Apriori)
+3) Pipeline (Apriori)
+Transformar dados em formato transacional (lista de listas).
+Definir mínimos: suporte e confiança (e às vezes lift).
+Rodar Apriori.
+Filtrar regras relevantes.
+Interpretar para recomendação/estratégia.
+4) “O que lembrar”
+Regras não são causalidade; são associação.
+Suporte evita regras raras; confiança mede “acerto”; lift mede “valor além do acaso”.
+
+Aprendizado não supervisionado - Modelagem de Tópicos (LDA) + Detecção de Anomalias
+1) Objetivo da aula
+Entender LDA (Latent Dirichlet Allocation) para descobrir tópicos ocultos em textos.
+Interpretar a ideia central: documentos misturam tópicos; tópicos são distribuições de palavras.
+Conectar com o cenário de não supervisionado: extrair estrutura de dados textuais sem rótulos.
+2) Conceitos essenciais (LDA)
+Documento → distribuição de tópicos
+Tópico → distribuição de palavras
+Um documento pode ter vários tópicos (isso foge da lógica “uma classe única” da classificação tradicional).
+
+Aprendizado não supervisionado - Modelagem de Tópicos (LDA) + Detecção de Anomalias
+3) Pipeline (LDA em passos)
+Definir objetivo e corpus (coleção de documentos).
+Pré-processamento de texto (limpeza, tokenização, remoção de stopwords, etc.).
+Vetorizar (ex.: bag-of-words / TF-IDF, conforme abordagem).
+Treinar LDA com k tópicos.
+Inspecionar tópicos (palavras mais prováveis) e interpretar.
+(Opcional) Ajustar k e repetir.
+4) “O que lembrar”
+LDA não rotula com “uma classe”: ele dá probabilidades por tópico.
+A qualidade dos tópicos depende muito do pré-processamento e do k escolhido.

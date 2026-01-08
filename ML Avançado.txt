@@ -1,0 +1,105 @@
+ML Avançado - Técnicas Avançadas de Otimização (Gradiente Descendente e variações)
+1) Objetivo da aula (3–5 linhas)
+Entender o papel de algoritmos de otimização em ML: encontrar os parâmetros que minimizam a função de custo.
+Consolidar a intuição de gradiente descendente e seus desafios (mínimos locais, planaltos, convergência).
+Ver por que escalonamento/padronização das features acelera e estabiliza a otimização.
+Conhecer variações como SGD e a ideia de otimizadores mais avançados (ex.: momentum/Adam como referência).
+2) Conceitos essenciais (definições curtas)
+Função de custo/perda: mede o erro do modelo (ex.: MSE).
+Gradiente: direção de maior subida; usar o negativo para descer (minimizar).
+Taxa de aprendizagem (learning rate): tamanho do passo na descida.
+Convergência: quando as atualizações ficam pequenas e a perda estabiliza.
+Função convexa: (ex.: regressão linear com MSE) tende a ter um mínimo global, reduzindo risco de mínimos locais.
+
+ML Avançado  - Técnicas Avançadas de Otimização (Gradiente Descendente e variações)
+3) Pipeline mental (otimização)
+Definir modelo + função de custo.
+Inicializar parâmetros.
+Repetir:
+calcular gradiente
+atualizar parâmetros (passo = learning rate)
+Parar por critério (épocas, tolerância, etc.).
+4) “O que lembrar” (pontos de prova)
+Learning rate alto pode divergir; baixo pode demorar.
+Funções não convexas podem ter armadilhas (mínimos locais/planaltos).
+Feature scaling ajuda muito o gradiente a convergir.
+
+ML Avançado  -  Avaliação Robusta de Modelos (Validação Cruzada + Bootstrap)
+1) Objetivo da aula
+Ir além do “hold-out” simples e usar métodos mais confiáveis para avaliar generalização:
+Validação cruzada (K-Fold)
+Bootstrap / Bagging
+Entender que olhar só acurácia (ou uma única divisão treino/teste) pode ser enganoso.
+2) Conceitos essenciais
+Hold-out: uma divisão treino/teste única (pode variar muito com o acaso).
+K-Fold Cross-Validation: divide em K partes e revezar treino/validação; agrega resultados (média/desvio).
+Bootstrap: gerar várias amostras do dataset com reposição, treinar várias vezes e agregar métricas.
+Bagging: bootstrap aggregating (com reposição).Pasting: amostragem sem reposição.
+
+ML Avançado  -  Avaliação Robusta de Modelos (Validação Cruzada + Bootstrap)
+3) Como resumir (pipeline)
+K-Fold
+Separar dados em K folds.
+Para cada fold: treinar em K-1, validar no fold restante.
+Agregar métricas (média e variabilidade).
+Bootstrap
+Criar N amostras bootstrap (com reposição).
+Treinar modelo em cada amostra.
+Medir e agregar métricas → estimar robustez/variabilidade.
+4) “O que lembrar”
+CV e Bootstrap ajudam a estimar a variabilidade do desempenho.
+Variabilidade alta pode indicar instabilidade/possível overfitting.
+
+ML Avançado  - Diagnóstico de Modelos (erros, curva de aprendizagem, métricas)
+1) Objetivo da aula
+Aprender a diagnosticar o comportamento do modelo (não só “ver a métrica final”).
+Usar ferramentas para entender onde o modelo erra e se há sinais de overfitting/underfitting.
+Consolidar diferença de avaliação entre supervisionado e não supervisionado (intuição).
+2) Conceitos essenciais
+Matriz de confusão: TP, TN, FP, FN — mostra padrão de erros por classe.
+Curva de aprendizagem:
+eixo x = tamanho do treino
+eixo y = métrica (acurácia/erro)
+compara curva de treino vs validação/teste
+Gap treino vs validação: indica qualidade de generalização.
+
+ML Avançado  - Diagnóstico de Modelos (erros, curva de aprendizagem, métricas)
+3) Como interpretar a curva de aprendizagem (resumo curto)
+Treino bom e validação ruim (gap grande) → tendência a overfitting.
+Treino ruim e validação ruim → tendência a underfitting.
+Treino e validação bons e próximos → boa generalização.
+Se aumentar dados melhora validação até um patamar → depois disso, ganhos dependem mais de modelo/features.
+4) “O que lembrar”
+Diagnóstico te diz o que fazer depois (mais dados, regularizar, trocar modelo, ajustar hiperparâmetros, melhorar features).
+
+ML Avançado  - Prevenção de Overfitting e Underfitting (Regularização e estratégias)
+1) Objetivo da aula
+Aprender técnicas para evitar overfitting e lidar com underfitting.
+Entender a motivação da regularização: penalizar complexidade para melhorar generalização.
+Ver causas comuns de modelos ruins: dados ruins ou algoritmos ruins.
+Conhecer estratégias práticas, incluindo uso de ensembles para reduzir underfitting em certos cenários.
+2) Conceitos essenciais (causas comuns)
+Dados
+Pouca quantidade (ruído de amostragem).
+Dados não representativos (viés de amostragem).
+Baixa qualidade (erros, inconsistências).
+Features irrelevantes (GIGO).
+Algoritmos
+Overfitting: modelo complexo demais para o dado.
+Underfitting: modelo simples demais / falta de features informativas.
+
+ML Avançado  - Prevenção de Overfitting e Underfitting (Regularização e estratégias)
+3) Técnicas para reduzir overfitting (lista curta)
+Regularização (ex.: L1/L2 como referência conceitual).
+Melhorar features (seleção, redução de dimensionalidade).
+Mais dados / dados melhores.
+Ajuste de hiperparâmetros (controlar complexidade).
+(Em redes neurais: early stopping aparece como técnica típica.)
+4) Estratégias para underfitting (lista curta)
+Aumentar capacidade do modelo (modelo mais expressivo).
+Ajustar hiperparâmetros para capturar mais complexidade.
+Melhorar features.
+Ensembles (Random Forest, Gradient Boosting, Bagging) podem ajudar quando bem ajustados (ex.: aumentar nº de árvores/estimadores).
+5) “O que lembrar”
+Regularização é uma “segurança” contra decorar o treino.
+Para underfitting, normalmente você precisa mais sinal: melhores features, modelos mais fortes ou tuning.

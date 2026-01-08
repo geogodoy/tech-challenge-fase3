@@ -1,0 +1,94 @@
+​​Sistema de recomendação - Recomendação por Popularidade
+1) Objetivo da aula (3–5 linhas)
+Entender o que é um sistema de recomendação e por que ele é essencial para personalização em escala.
+Aprender o baseline mais simples: recomendação por popularidade (itens mais consumidos/avaliados).
+Fixar a ideia de que recomendações precisam evoluir com feedback e com o equilíbrio exploration vs exploitation.
+2) Conceitos essenciais (definições rápidas)
+Recomendação por popularidade: sugere itens com maior volume de interações positivas (contagem, soma de ratings, etc.).
+Interações: cliques, compras, ratings, tempo de visualização, etc.
+Exploração vs Explotação
+Exploração: sugerir itens novos/menos conhecidos para aprender preferências.
+Explotação: recomendar o que já funciona (mais provável de agradar).
+
+​​Sistema de recomendação - Recomendação por Popularidade
+3) Pipeline (popularidade)
+Coletar interações (user_id, item_id, rating/interaction).
+Agregar por item (contagem ou soma de interações).
+Ordenar itens e retornar Top-N.
+Atualizar ranking conforme novos dados/feedback.
+4) Limitações (bom colocar no resumo)
+Pouca personalização (todo mundo recebe “top itens”).
+Pode reforçar “efeito manada” (rich-get-richer).
+Sofre com mudanças de tendência (drift).
+
+​​Sistema de recomendação -  Fatoração de Matrizes
+1) Objetivo da aula
+Entender como representar recomendação como uma matriz usuário × item (muito esparsa).
+Aprender a intuição de espaços latentes: fatores ocultos que explicam preferências.
+Conhecer fatoração como técnica para prever avaliações faltantes e melhorar personalização.
+2) Conceitos essenciais
+Matriz de utilidade: usuários nas linhas, itens nas colunas, valores = interações/ratings.
+Esparsidade: maioria dos usuários não interage com a maioria dos itens.
+Espaço latente: dimensões “ocultas” (gosto por ação/romance, preferência por preço etc.) que o modelo aprende.
+Fatoração: decompor a matriz em duas matrizes menores (usuários e itens em fatores latentes).
+
+​​Sistema de recomendação - Fatoração de Matrizes
+3) Pipeline (alto nível)
+Construir matriz usuário×item (ou formato esparso).
+Escolher técnica (ex.: SVD/NMF e afins).
+Treinar fatores latentes.
+Prever notas/interações faltantes.
+Recomendar Top-N por usuário.
+4) “O que lembrar”
+Fatoração = base forte de recomendação colaborativa.
+Resolve personalização melhor que popularidade, mas exige mais cuidado com dados e avaliação.
+
+​​Sistema de recomendação - Filtragem Colaborativa e por Conteúdo
+1) Objetivo da aula
+Entender como sistemas recomendam com base em:
+Filtragem colaborativa (padrões de usuários/itens),
+Recomendação baseada em conteúdo (características do item).
+Aprender a noção de similaridade (usuário-usuário, item-item) e como ela vira recomendação.
+Ter visão de como enriquecer modelos com ML (regressão/classificação/ensemble e até deep learning multimodal).
+2) Conceitos essenciais
+Colaborativa: “usuários parecidos gostam de itens parecidos”.
+Conteúdo: recomenda itens similares ao que você consumiu, usando atributos do item (texto, tags, categorias).
+Similaridade: pode ser calculada por correlação/distâncias (ex.: Pearson citado como exemplo).
+Enriquecimento de dados: usar PLN (sentimento/tópicos) para entender conteúdo.
+
+​​Sistema de recomendação - Filtragem Colaborativa e por Conteúdo
+3) Pipeline (colaborativa — visão geral)
+Montar matriz de interações.
+Calcular similaridade (user-user ou item-item).
+Gerar recomendações baseadas nos “vizinhos” mais similares.
+Validar e iterar.
+4) Pipeline (conteúdo — visão geral)
+Extrair features do item (tags, texto, embeddings, etc.).
+Calcular similaridade entre itens.
+Recomendar itens mais similares ao histórico do usuário.
+5) “O que lembrar”
+Colaborativa sofre com cold start (usuário/item novo).
+Conteúdo reduz cold start para item (se tiver features), mas pode limitar diversidade (recomendar “mais do mesmo”).
+
+​​Sistema de recomendação - Sistemas de Recomendação em Produção (Produtização)
+1) Objetivo da aula
+Entender o que muda ao levar recomendação para produção: não é só treinar modelo.
+Aprender conceitos críticos: monitoramento de drift (de dados e de conceito), atualização de modelos, escalabilidade e performance.
+Ver boas práticas de infraestrutura/engenharia para manter o sistema confiável: versionamento, CI/CD e ambientes estáveis.
+2) Conceitos essenciais
+Data drift: distribuição dos dados muda (perfil de usuários, catálogo, sazonalidade).
+Concept drift: o “significado” do que é relevante muda (preferências/tendências mudam).
+Atualização contínua: re-treino, re-ranking, atualização de parâmetros.
+Escalabilidade: latência, throughput e custo sob carga real.
+Limites operacionais: thresholds de qualidade/alertas para degradar com segurança.
+
+​​Sistema de recomendação - Sistemas de Recomendação em Produção (Produtização)
+3) Pipeline (produção — visão macro)
+Pipeline de dados (coleta → limpeza → features).
+Treino e validação (offline).
+Deploy do modelo/serviço de recomendação.
+Monitoramento contínuo (qualidade + drift + performance).
+Atualização/roll-out sem interrupção (versionamento e releases).
+4) “O que lembrar”
+Recomendação em produção = sistema (dados + modelo + infraestrutura + monitoramento).
+Sem monitorar drift, o modelo “envelhece” e perde precisão/relevância.
